@@ -14,8 +14,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public LayerMask groundCheckMask;
 
+    bool facingLeft;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 
         moveVelocity = 7f;
 
@@ -25,14 +28,29 @@ public class PlayerMovement : MonoBehaviour {
 
         onLadder = false;
 
+        facingLeft = false;
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
         if (Input.GetAxis("Horizontal") != 0)
         {
             myRB.velocity = new Vector2(moveVelocity * Input.GetAxis("Horizontal"), myRB.velocity.y);
+
+            if (Input.GetAxis("Horizontal") < 0 && !facingLeft)
+            {
+                FlipPlayer();
+                facingLeft = true;
+            }
+            else if (Input.GetAxis("Horizontal") > 0 && facingLeft)
+            {
+                FlipPlayer();
+                facingLeft = false;
+            }
+
         }
         else
         {
@@ -59,7 +77,10 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
-
-
 	}
+
+    void FlipPlayer()
+    {
+        transform.localScale = new Vector3(transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
+    }
 }
