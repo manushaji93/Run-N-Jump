@@ -18,7 +18,7 @@ TagManager:
   - Player
   - Ground
   - Ladder
-  - 
+  - BG
   - 
   - 
   - 
@@ -42,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 845452807
+    locked: 0
+  - name: BG Objects
+    uniqueID: 1398689647
+    locked: 0
+  - name: Objects
+    uniqueID: 4100754403
+    locked: 0
+  - name: FG Objects
+    uniqueID: 2720959317
     locked: 0
